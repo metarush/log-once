@@ -1,5 +1,5 @@
 {
-    "name": "metarush/perm",
+    "name": "metarush/log-once",
     "type": "library",
     "description": "Log messages, usually error messages, only once and optionally get notified. No more flood of error logs with the same message.",
     "keywords": [
