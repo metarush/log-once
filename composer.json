@@ -1,0 +1,40 @@
+{
+    "name": "metarush/perm",
+    "type": "library",
+    "description": "Log messages, usually error messages, only once and optionally get notified. No more flood of error logs with the same message.",
+    "keywords": [
+        "log",
+        "logger",
+        "logging",
+        "error log",
+        "error logger",
+        "error logging"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "metarush/log-once contributors",
+            "homepage": "https://github.com/metarush/log-once/graphs/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MetaRush\\LogOnce\\": "src",
+            "Tests\\": "tests\\unit"
+        }
+    },
+    "require": {
+        "php": ">=7.4",
+        "metarush/data-mapper": "^1.7",
+        "zkwbbr/utils": "^2.0",
+        "php-pushover/php-pushover": "^1.0",
+        "metarush/email-fallback": "^4.0",
+        "metarush/notifier": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "phpstan/phpstan": "^0.12",
+        "roave/security-advisories": "dev-master",
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
