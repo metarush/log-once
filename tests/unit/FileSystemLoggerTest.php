@@ -31,7 +31,7 @@ class FileSystemLoggerTest extends Common
             \unlink($this->testDir . $v);
     }
 
-    public function test_process_logMessageThatDoesNotExist_pass()
+    public function test_log_logMessageThatDoesNotExist_pass()
     {
         $this->logger
             ->setHash('12345')
@@ -45,7 +45,7 @@ class FileSystemLoggerTest extends Common
         $this->assertCount(1, $files);
     }
 
-    public function test_process_logMessageThatAlreadyExist_nothingHappensPass()
+    public function test_log_logMessageThatAlreadyExist_nothingHappensPass()
     {
         $this->logger
             ->setHash('12345')
@@ -66,7 +66,7 @@ class FileSystemLoggerTest extends Common
         $this->assertCount(1, $files);
     }
 
-    public function test_process_logMessageWithPushoverNotification_pass()
+    public function test_log_logMessageWithPushoverNotification_pass()
     {
         $notifiers = [
                 (new PushoverNotifier)

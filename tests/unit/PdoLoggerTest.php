@@ -66,7 +66,7 @@ class PdoLoggerTest extends Common
             \unlink($this->dbFile);
     }
 
-    public function test_process_logMessageThatDoesNotExist_pass()
+    public function test_log_logMessageThatDoesNotExist_pass()
     {
         $this->logger
             ->setHash('12345')
@@ -80,7 +80,7 @@ class PdoLoggerTest extends Common
         $this->assertCount(1, $rows);
     }
 
-    public function test_process_logMessageThatAlreadyExist_nothingHappensPass()
+    public function test_log_logMessageThatAlreadyExist_nothingHappensPass()
     {
         // seed
         $data = [

@@ -39,7 +39,7 @@ $adapter = new FileSytemLogger($logDir);
 ```
 
 Note: To mark a log file as read, rename it with a `__READ` suffix
-e.g., `2021-01-01_00-00-00_+0000__12345__READ.log` or, you can simply delete the file.
+e.g., `2021-01-01_00-00-00_+0000__12345__READ.log` or you can simply delete the file.
 
 ### PDO database (e.g., MySQL, PostgreSQL, SQLite)
 
@@ -63,7 +63,10 @@ $dataMapper = (new DataMapperBuilder)
     ->build();
 
 $adapter = new PdoLogger($dataMapper, 'yourLogTable');
+
 ```
+
+Note: To mark a log row as read, set the `read` column to `1` or you can simply delete the row.
 
 ## Notifiers
 
@@ -89,3 +92,8 @@ $notifiers = [$pushoverNotifier, $emailNotifier];
 Inject `$notifiers` in `->setNotifiers($notifiers)` to the sample usage above.
 
 For more info on how to use other available notifiers such as email visit [metarush/notifier](https://github.com/metarush/notifier)
+
+## Viewing logs
+
+A UI to view the logs is not included in this package.
+You can simply use whatever database admin tool you're using if you're using PDO logger.
