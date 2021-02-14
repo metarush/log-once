@@ -22,10 +22,10 @@ class Adapter implements AdapterInterface
     public function log(string $hash, string $message, string $timeZone): void
     {
         $data = [
-            'createdOn' => AdjustedDateTimeByTimeZone::x('now', $timeZone, 'Y-m-d H:i:s'),
-            'hash'      => $hash,
-            'message'   => $message,
-            'read'      => 0,
+            'createdOn'   => AdjustedDateTimeByTimeZone::x('now', $timeZone, 'Y-m-d H:i:s'),
+            'hash'        => $hash,
+            'message'     => $message,
+            'alreadyRead' => 0,
         ];
 
         $this->dataMapper->create($this->table, $data);
@@ -34,8 +34,8 @@ class Adapter implements AdapterInterface
     public function logExistAndNotYetRead(string $hash): bool
     {
         $where = [
-            'hash' => $hash,
-            'read' => 0,
+            'hash'        => $hash,
+            'alreadyRead' => 0,
         ];
 
         $row = $this->dataMapper->findOne($this->table, $where);

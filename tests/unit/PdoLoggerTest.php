@@ -34,11 +34,11 @@ class PdoLoggerTest extends Common
 
             $this->pdo->query('
                 CREATE TABLE test (
-                `id`        INTEGER PRIMARY KEY AUTOINCREMENT,
-                `createdOn`	TEXT,
-                `hash`	    TEXT,
-                `message`   TEXT,
-                `read`      INTEGER
+                `id`            INTEGER PRIMARY KEY AUTOINCREMENT,
+                `createdOn`     TEXT,
+                `hash`          TEXT,
+                `message`       TEXT,
+                `alreadyRead`   INTEGER
             )');
         }
 
@@ -84,10 +84,10 @@ class PdoLoggerTest extends Common
     {
         // seed
         $data = [
-            'createdOn' => \date('Y-m-d H:i:s'),
-            'hash'      => '12345',
-            'message'   => 'test',
-            'read'      => 0
+            'createdOn'     => \date('Y-m-d H:i:s'),
+            'hash'          => '12345',
+            'message'       => 'test',
+            'alreadyRead'   => 0
         ];
         $this->dataMapper->create($this->table, $data);
 

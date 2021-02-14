@@ -38,8 +38,8 @@ $logDir = '/path/to/logs';
 $adapter = new FileSytemLogger($logDir);
 ```
 
-Note: To mark a log file as read, rename it with a `__READ` suffix
-e.g., `2021-01-01_00-00-00_+0000__12345__READ.log` or you can simply delete the file.
+Note: To mark a log file as read, rename it with a `__ALREADYREAD` suffix
+e.g., `2021-01-01_00-00-00_+0000__12345__ALREADYREAD.log` or you can simply delete the file.
 
 ### PDO database (e.g., MySQL, PostgreSQL, SQLite)
 
@@ -49,7 +49,7 @@ Create a table with ff. fields:
 - `createdOn`    DATETIME, // must use YYYY-MM-DD HH:MM:SS
 - `hash`        TEXT, // make length as long as your hash function's output e.g., if \md5(), must be 32
 - `message`   TEXT, // make length as long your log messages
-- `read`      INTEGER // will have 1 or 0 value, can be ENUM or UNSIGNED TINY INT if you want
+- `alreadyRead`      INTEGER // will have 1 or 0 value, can be ENUM or UNSIGNED TINY INT if you want
 
 ```php
 
@@ -66,7 +66,7 @@ $adapter = new PdoLogger($dataMapper, 'yourLogTable');
 
 ```
 
-Note: To mark a log row as read, set the `read` column to `1` or you can simply delete the row.
+Note: To mark a log row as read, set the `alreadyRead` column to `1` or you can simply delete the row.
 
 ## Notifiers
 
@@ -96,4 +96,5 @@ For more info on how to use other available notifiers such as email visit [metar
 ## Viewing logs
 
 A UI to view the logs is not included in this package.
-You can simply use whatever database admin tool you're using if you're using PDO logger.
+You can simply use whatever database admin tool you're using if you're using PDO logger,
+or manually view the file system, if you're using the File system logger.
