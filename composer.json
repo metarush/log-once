@@ -25,11 +25,11 @@
     },
     "require": {
         "php": ">=7.4",
-        "metarush/data-mapper": "^1.7",
-        "zkwbbr/utils": "^2.0",
-        "php-pushover/php-pushover": "^1.0",
-        "metarush/email-fallback": "^4.0",
-        "metarush/notifier": "^1.0"
+        "metarush/data-mapper": "1.*",
+        "zkwbbr/utils": "2.*",
+        "php-pushover/php-pushover": "1.*",
+        "metarush/email-fallback": "4.*",
+        "metarush/notifier": "1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
