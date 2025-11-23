@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace MetaRush\LogOnce\Pdo;
 
 use MetaRush\LogOnce\AdapterInterface;
-use MetaRush\DataMapper\DataMapper;
+use MetaRush\DataAccess\DataAccess;
 use Zkwbbr\Utils\AdjustedDateTimeByTimeZone;
 
 class Adapter implements AdapterInterface
 {
-    private DataMapper $dataMapper;
+    private DataAccess $dal;
     private string $table;
 
-    public function __construct(DataMapper $dataMapper, string $table)
+    public function __construct(DataAccess $dataMapper, string $table)
     {
-        $this->dataMapper = $dataMapper;
+        $this->dal = $dataMapper;
         $this->table = $table;
     }
 
@@ -28,7 +28,7 @@ class Adapter implements AdapterInterface
             'alreadyRead' => 0,
         ];
 
-        $this->dataMapper->create($this->table, $data);
+        $this->dal->create($this->table, $data);
     }
 
     public function logExistAndNotYetRead(string $hash): bool
@@ -38,7 +38,7 @@ class Adapter implements AdapterInterface
             'alreadyRead' => 0,
         ];
 
-        $row = $this->dataMapper->findOne($this->table, $where);
+        $row = $this->dal->findOne($this->table, $where);
 
         return (bool) $row;
     }

@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.0.4 - 2025-11-24
+
+### Changed
+
+- Remove unused dependencies metarush/email-fallback, metarush/notifier, php-pushover/php-pushover.
+- Replace dependency metarush/data-mapper with metarush/data-access.
+
 ## 1.0.3 - 2023-09-07
 
 ### Fixed

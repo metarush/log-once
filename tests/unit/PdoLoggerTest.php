@@ -6,8 +6,8 @@ namespace Tests;
 
 use MetaRush\LogOnce\LogOnce;
 use MetaRush\LogOnce\Pdo\Adapter;
-use MetaRush\DataMapper\Builder;
-use MetaRush\DataMapper\DataMapper;
+use MetaRush\DataAccess\Builder;
+use MetaRush\DataAccess\DataAccess;
 
 class PdoLoggerTest extends Common
 {
@@ -16,7 +16,7 @@ class PdoLoggerTest extends Common
     private string $table = 'test';
     private \PDO $pdo;
     private Adapter $adapter;
-    private DataMapper $dataMapper;
+    private DataAccess $dal;
 
     public function setUp(): void
     {
@@ -44,11 +44,11 @@ class PdoLoggerTest extends Common
 
         // ------------------------------------------------
 
-        $this->dataMapper = (new Builder)
+        $this->dal = (new Builder)
             ->setDsn($dsn)
             ->build();
 
-        $this->adapter = new Adapter($this->dataMapper, $this->table);
+        $this->adapter = new Adapter($this->dal, $this->table);
 
         $this->logger = (new LogOnce($this->adapter))
             ->setTimeZone('UTC');
@@ -57,7 +57,7 @@ class PdoLoggerTest extends Common
     public function tearDown(): void
     {
         // close the DB connections so unlink will work
-        unset($this->dataMapper);
+        unset($this->dal);
         unset($this->pdo);
         unset($this->adapter);
         unset($this->logger);
@@ -75,7 +75,7 @@ class PdoLoggerTest extends Common
 
         // ------------------------------------------------
 
-        $rows = $this->dataMapper->findAll($this->table);
+        $rows = $this->dal->findAll($this->table);
 
         $this->assertCount(1, $rows);
     }
@@ -89,7 +89,7 @@ class PdoLoggerTest extends Common
             'message'       => 'test',
             'alreadyRead'   => 0
         ];
-        $this->dataMapper->create($this->table, $data);
+        $this->dal->create($this->table, $data);
 
         // ------------------------------------------------
 
@@ -100,7 +100,7 @@ class PdoLoggerTest extends Common
 
         // ------------------------------------------------
 
-        $rows = $this->dataMapper->findAll($this->table);
+        $rows = $this->dal->findAll($this->table);
 
         $this->assertCount(1, $rows);
     }
