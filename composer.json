@@ -25,7 +25,7 @@
     },
     "require": {
         "php": ">=7.4",
-        "metarush/data-access": "1.*",
+        "metarush/data-access": "1.* || 2.*",
         "zkwbbr/utils": "2.*"
     },
     "require-dev": {
